@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,10 +7,94 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="com.vmorenomarin.contapp.MainActivity">
 
-    <TextView
+    <!--Conventions
+     inf = input_name_field
+     ine = input_name_editable
+     -->
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/inf"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-</RelativeLayout>
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/ine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/name_hint"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <!--Conventions
+    ibf = input_email_field
+    ibe = input_email_editable
+    -->
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/ibf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/ibe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/birth_hint"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <!--Conventions
+     ipf = input_phone_field
+     ine = input_phone_editable
+     -->
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/ipf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/ipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/phone_hint"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <!--Conventions
+        ief = input_email_field
+        iee = input_email_editable
+        -->
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/ief"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/iee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/email_hint"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <!--Conventions
+    ief = input_email_field
+    iee = input_email_editable
+    -->
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/idf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/ide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/description_hint"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+
+</LinearLayout>
