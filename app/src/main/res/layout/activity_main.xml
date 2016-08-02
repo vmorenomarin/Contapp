@@ -84,7 +84,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/phone_hint"
-<!--             android:inputType="phone" -->
+            android:inputType="phone"
             android:layout_gravity="center_horizontal"/>
     </android.support.design.widget.TextInputLayout>
 
@@ -133,7 +133,8 @@
         android:background="@color/colorAccent"
         android:text="@string/btn_confirmation"
         android:layout_marginTop="250dp"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/white"
+        android:onClick="setBtnConfirmation"/>
 
         </LinearLayout>
 </ScrollView>

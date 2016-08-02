@@ -2,8 +2,8 @@
     <string name="app_name">Contapp</string>
     <string name="name_hint">Nombre</string>
     <string name="phone_hint">Teléfono</string>
-    <string name="email_hint">E-Mail</string>
-    <string name="birth_hint">Fecha de Nacimiento</string>
+    <string name="email_hint">Correo electrónico</string>
+    <string name="birth_hint">Fecha de nacimiento</string>
     <string name="description_hint">Descripción</string>
     <string name="btn_confirmation">Siguiente</string>
 </resources>

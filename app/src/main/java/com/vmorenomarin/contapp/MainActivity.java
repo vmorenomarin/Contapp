@@ -1,5 +1,6 @@
 package com.vmorenomarin.contapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -57,9 +58,8 @@ public class MainActivity extends AppCompatActivity implements OnFocusChangeList
 
         btnConfirmation = (Button) findViewById(R.id.btnConfirmation);
 
-        //datePicker = (DatePicker) findViewById(R.id.datePicker);
 
-        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+        dateFormatter = new SimpleDateFormat("d 'de' MMMM, yyyy", new Locale("es", "ES"));
 
         findViewsById();
 
@@ -87,11 +87,16 @@ public class MainActivity extends AppCompatActivity implements OnFocusChangeList
 
     }
 
-
-
     @Override
     public void onFocusChange(View view, boolean hasFocus) {
         if(hasFocus)
         fromDatePickerDialog.show();
     }
+
+    public void setBtnConfirmation(View view){
+        Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+        startActivity(intent);
+    }
+
+
 }
