@@ -14,16 +14,29 @@ import android.text.TextWatcher;  //valida el texto ingresado.
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.DatePicker;
+import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.DatePickerDialog.OnDateSetListener;
+import android.text.InputType;
+import android.view.Menu;
+import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 
-public class MainActivity extends AppCompatActivity {
+
+
+public class MainActivity extends AppCompatActivity implements OnFocusChangeListener {
 
     private TextInputEditText inputNameEditable, inputEmailEditable, inputPhoneEditable, inputDatebirthdayEditable, inputDescriptionEditable;
     private TextInputLayout inputLayoutName, inputLayoutEmail, inputLayoutPhone, inputLayoutDatebirthday, inputLayoutDescription;
     private Button btnConfirmation;
     private DatePicker datePicker;
-    private TextView displayDate;
-
+    private DatePickerDialog fromDatePickerDialog;
+    private SimpleDateFormat dateFormatter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +57,41 @@ public class MainActivity extends AppCompatActivity {
 
         btnConfirmation = (Button) findViewById(R.id.btnConfirmation);
 
-        datePicker = (DatePicker) findViewById(R.id.datePicker);
+        //datePicker = (DatePicker) findViewById(R.id.datePicker);
 
+        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+
+        findViewsById();
+
+        setDateTimeField();
 
     }
-}
 
+    private void findViewsById() {
+        inputDatebirthdayEditable = (TextInputEditText) findViewById(R.id.ibe);
+        inputDatebirthdayEditable.setInputType(InputType.TYPE_NULL);
+    }
+
+    private void setDateTimeField() {
+        inputDatebirthdayEditable.setOnFocusChangeListener(this);
+
+        Calendar newCalendar = Calendar.getInstance();
+        fromDatePickerDialog = new DatePickerDialog(this, new OnDateSetListener() {
+
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+                inputDatebirthdayEditable.setText(dateFormatter.format(newDate.getTime()));
+            }
+        }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+
+    }
+
+
+
+    @Override
+    public void onFocusChange(View view, boolean hasFocus) {
+        if(hasFocus)
+        fromDatePickerDialog.show();
+    }
+}
