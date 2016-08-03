@@ -25,27 +25,20 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+        Intent intent=getIntent();
         Bundle parametros = getIntent().getExtras();
 
-//
+        String name = parametros.getString("pname");
+        String birthday= parametros.getString("pbirthday");
+        String phone = parametros.getString("pphone");
+        String email = parametros.getString("pemail");
+        String description = parametros.getString("pdescription");
 
         tvName      = (TextView)    findViewById(R.id.tvName);
         tvBirthday  = (TextView)    findViewById(R.id.tvBirthday);
         tvPhone     = (TextView)    findViewById(R.id.tvPhone);
         tvEmail     = (TextView)    findViewById(R.id.tvEmail);
         tvDescription   =   (TextView)  findViewById(R.id.tvDescription);
-
-//        String name = parametros.getString(getResources().getString(R.string.pname));
-//        String birthday= parametros.getString(getResources().getString(R.string.pbirthday));
-//        String phone = parametros.getString(getResources().getString(R.string.pphone));
-//        String email = parametros.getString(getResources().getString(R.string.pemail));
-//        String description = parametros.getString(getResources().getString(R.string.pdescription));
-
-        String name = parametros.getString(getResources().getString(R.string.pname));
-        String birthday= parametros.getString(getResources().getString(R.string.pbirthday));
-        String phone = parametros.getString(getResources().getString(R.string.pphone));
-        String email = parametros.getString(getResources().getString(R.string.pemail));
-        String description = parametros.getString(getResources().getString(R.string.pdescription));
 
         tvName.setText(name);
         tvBirthday.setText(birthday);
@@ -57,7 +50,6 @@ public class Main2Activity extends AppCompatActivity {
 
     public void setBtnEdit(View view){
         Intent intent = new Intent(Main2Activity.this, MainActivity.class);
-        //intent.putExtra("nombre")
         startActivity(intent);
 
     }
@@ -67,7 +59,7 @@ public class Main2Activity extends AppCompatActivity {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             Intent intent = new Intent(Main2Activity.this, MainActivity.class);
             startActivity(intent);
-
+             finish();
         }
         return super.onKeyDown(keyCode, event);
     }

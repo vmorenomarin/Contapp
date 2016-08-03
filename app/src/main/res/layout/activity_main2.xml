@@ -10,49 +10,121 @@
     tools:context="com.vmorenomarin.contapp.Main2Activity"
     android:orientation="vertical">
 
+
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title_activity2"
+        android:gravity="center_horizontal"
         android:textStyle="bold"
-        android:textSize="@dimen/name"/>
+        android:textSize="@dimen/name"
+        />
 
-    <TextView
-        android:id="@+id/tvName"
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/name_hint"
-        android:textSize="@dimen/name"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
 
-    <TextView
-        android:id="@+id/tvBirthday"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name_hint"
+            android:textSize="@dimen/name"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name_hint"
+            android:textSize="18dp"
+            android:layout_marginLeft="10dp"/>
+
+     </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/birth_hint"
-        android:textSize="@dimen/numero"/>
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tvPhone"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cumpleaños"
+            android:textSize="@dimen/name"
+            android:textStyle="bold"/>
+
+            <TextView
+            android:id="@+id/tvBirthday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4 de abril, 1986"
+            android:textSize="18dp"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/phone_hint"
-        android:textSize="@dimen/numero"/>
+        android:orientation="horizontal">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/phone_hint"
+            android:textSize="@dimen/name"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/phone_hint"
+            android:textSize="@dimen/numero"
+            android:layout_marginLeft="10dp"/>
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="e-mail"
+            android:textSize="@dimen/name"
+            android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/tvEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/email_hint"
-        android:textSize="@dimen/numero"/>
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp"/>
+
+     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/description_hint"
+        android:textSize="@dimen/name"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/tvDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/description_hint"
-        android:textSize="@dimen/numero"/>
+        android:textSize="18dp"/>
 
     <Button
         android:id="@+id/btnEdit"
