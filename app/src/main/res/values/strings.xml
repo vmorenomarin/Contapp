@@ -6,4 +6,12 @@
     <string name="birth_hint">Fecha de nacimiento</string>
     <string name="description_hint">Descripción</string>
     <string name="btn_confirmation">Siguiente</string>
+    <string name="btn_edit">Editar</string>
+    <string name="title_activity2">Confirmar Datos</string>
+    <string name="pname">name</string>
+    <string name="pbirthday">birthday</string>
+    <string name="pphone">phone</string>
+    <string name="pemail">email</string>
+    <string name="pdescription">description</string>
+
 </resources>
