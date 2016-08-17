@@ -6,9 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.widget.Button;
-import android.widget.EditText;
 import android.support.design.widget.TextInputEditText;
-import android.text.Editable;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.support.design.widget.TextInputLayout;
@@ -34,9 +32,9 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements OnFocusChangeListener {
 
-    private EditText inputNameEditable, inputEmailEditable, inputPhoneEditable, inputDatebirthdayEditable, inputDescriptionEditable;
-    private TextInputLayout inputLayoutName, inputLayoutEmail, inputLayoutPhone, inputLayoutDatebirthday, inputLayoutDescription;
-    private Button btnConfirmation;
+    TextInputEditText inputNameEditable, inputEmailEditable, inputPhoneEditable, inputDatebirthdayEditable, inputDescriptionEditable;
+    //TextInputLayout inputLayoutName, inputLayoutEmail, inputLayoutPhone, inputLayoutDatebirthday, inputLayoutDescription;
+    Button btnConfirmation;
     private DatePicker datePicker;
     private DatePickerDialog fromDatePickerDialog;
     private SimpleDateFormat dateFormatter;
@@ -47,29 +45,59 @@ public class MainActivity extends AppCompatActivity implements OnFocusChangeList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        inputLayoutName = (TextInputLayout) findViewById(R.id.inf);
+     /*   inputLayoutName = (TextInputLayout) findViewById(R.id.inf);
         inputLayoutDatebirthday = (TextInputLayout) findViewById(R.id.ibf);
         inputLayoutPhone = (TextInputLayout) findViewById(R.id.ipf);
         inputLayoutEmail = (TextInputLayout) findViewById(R.id.ief);
-        inputLayoutDescription = (TextInputLayout) findViewById(R.id.idf);
+        inputLayoutDescription = (TextInputLayout) findViewById(R.id.idf);*/
 
-        inputNameEditable = (EditText) findViewById(R.id.ine);
-        inputDatebirthdayEditable = (EditText) findViewById(R.id.ibe);
-        inputPhoneEditable = (EditText) findViewById(R.id.ipe);
-        inputEmailEditable = (EditText) findViewById(R.id.iee);
-        inputDescriptionEditable = (EditText) findViewById(R.id.ide);
+        inputNameEditable = (TextInputEditText) findViewById(R.id.ine);
+        inputDatebirthdayEditable = (TextInputEditText) findViewById(R.id.ibe);
+        inputPhoneEditable = (TextInputEditText) findViewById(R.id.ipe);
+        inputEmailEditable = (TextInputEditText) findViewById(R.id.iee);
+        inputDescriptionEditable = (TextInputEditText) findViewById(R.id.ide);
+
+        Intent intent = getIntent();
+
+        if(intent == null) {
+            return;
+        }
+
+        Bundle parametros = getIntent().getExtras();
+
+        if(parametros == null){
+            return;
+        }
+
+        String name = parametros.getString("pname");
+        String birthday= parametros.getString("pbirthday");
+        String phone = parametros.getString("pphone");
+        String email = parametros.getString("pemail");
+        String description = parametros.getString("pdescription");
+
+
+        if(birthday == null){
+            return;
+        }
+
+        inputNameEditable.setText(name);
+        inputDatebirthdayEditable.setText(birthday);
+        inputPhoneEditable.setText(phone);
+        inputEmailEditable.setText(email);
+        inputDescriptionEditable.setText(description);
 
         btnConfirmation = (Button) findViewById(R.id.btnConfirmation);
         dateFormatter = new SimpleDateFormat("d 'de' MMMM, yyyy", new Locale("es", "ES"));
 
 
-        findViewsById();
-        setDateTimeField();
+
+       findViewsById();
+       setDateTimeField();
 
     }
 
     private void findViewsById() {
-        inputDatebirthdayEditable = (EditText) findViewById(R.id.ibe);
+        inputDatebirthdayEditable = (TextInputEditText) findViewById(R.id.ibe);
         inputDatebirthdayEditable.setInputType(InputType.TYPE_NULL);
     }
 
@@ -103,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements OnFocusChangeList
         intent.putExtra("pemail", inputEmailEditable.getText().toString());
         intent.putExtra("pdescription", inputDescriptionEditable.getText().toString());
         startActivity(intent);
-        finish();
+        this.finish();
     }
 
 }

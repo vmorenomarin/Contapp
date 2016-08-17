@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.view.KeyEvent;
+import android.support.design.widget.TextInputEditText;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -13,17 +14,19 @@ import org.w3c.dom.Text;
 
 public class Main2Activity extends AppCompatActivity {
 
-    private Button  btnEdit;
-    private TextView tvName;
-    private TextView tvBirthday;
-    private TextView tvPhone;
-    private TextView tvEmail;
-    private TextView tvDescription;
+    Button  btnEdit;
+    TextView tvName;
+    TextView tvBirthday;
+    TextView tvPhone;
+    TextView tvEmail;
+    TextView tvDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+
 
         Intent intent=getIntent();
         Bundle parametros = getIntent().getExtras();
@@ -48,21 +51,31 @@ public class Main2Activity extends AppCompatActivity {
 
     }
 
-    public void setBtnEdit(View view){
-        Intent intent = new Intent(Main2Activity.this, MainActivity.class);
-        startActivity(intent);
-
-    }
-
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             Intent intent = new Intent(Main2Activity.this, MainActivity.class);
             startActivity(intent);
-             finish();
         }
         return super.onKeyDown(keyCode, event);
     }
+
+
+    public void setBtnEdit(View view){
+        Intent intent = new Intent(Main2Activity.this, MainActivity.class);
+
+        intent.putExtra("pname", tvName.getText().toString());
+        intent.putExtra("pbirthday", tvBirthday.getText().toString());
+        intent.putExtra("pphone", tvPhone.getText().toString());
+        intent.putExtra("pemail", tvEmail.getText().toString());
+        intent.putExtra("pdescription", tvDescription.getText().toString());
+
+        startActivity(intent);
+
+        this.finish();
+
+    }
+
 
 
 }
