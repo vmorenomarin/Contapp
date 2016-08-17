@@ -1,5 +1,6 @@
 package com.vmorenomarin.contapp;
 
+import android.view.KeyEvent;
 import android.widget.EditText;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -35,7 +36,6 @@ public class MainActivity extends AppCompatActivity implements OnFocusChangeList
         setContentView(R.layout.activity_main);
 
         dateFormatter = new SimpleDateFormat("d 'de' MMMM, yyyy", new Locale("es", "ES"));
-
 
         findViewsById();
         setDateTimeField();
@@ -82,7 +82,6 @@ public class MainActivity extends AppCompatActivity implements OnFocusChangeList
     private void findViewsById() {
         inputDatebirthdayEditable = (EditText) findViewById(R.id.ibe);
         inputDatebirthdayEditable.setInputType(InputType.TYPE_NULL);
-        inputDatebirthdayEditable.requestFocus();
     }
 
     private void setDateTimeField() {
@@ -100,6 +99,12 @@ public class MainActivity extends AppCompatActivity implements OnFocusChangeList
 
     }
 
+    @Override
+    public void onFocusChange(View view, boolean hasFocus) {
+        if (hasFocus) {
+            fromDatePickerDialog.show();
+        }
+    }
 
     public void setBtnConfirmation(View view) {
         Intent intent = new Intent(MainActivity.this, Main2Activity.class);
@@ -114,10 +119,11 @@ public class MainActivity extends AppCompatActivity implements OnFocusChangeList
     }
 
     @Override
-    public void onFocusChange(View view, boolean hasFocus) {
-        if (hasFocus) {
-            fromDatePickerDialog.show();
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            finish();
         }
+        return super.onKeyDown(keyCode, event);
     }
 
 

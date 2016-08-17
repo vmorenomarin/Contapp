@@ -51,11 +51,17 @@ public class Main2Activity extends AppCompatActivity {
 
     }
 
-    @Override
+   @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             Intent intent = new Intent(Main2Activity.this, MainActivity.class);
+            intent.putExtra("pname", tvName.getText().toString());
+            intent.putExtra("pbirthday", tvBirthday.getText().toString());
+            intent.putExtra("pphone", tvPhone.getText().toString());
+            intent.putExtra("pemail", tvEmail.getText().toString());
+            intent.putExtra("pdescription", tvDescription.getText().toString());
             startActivity(intent);
+            this.finish();
         }
         return super.onKeyDown(keyCode, event);
     }
