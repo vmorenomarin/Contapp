@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal">
 
-        <android.support.design.widget.TextInputEditText
+        <EditText
             android:id="@+id/ine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -61,13 +61,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal">
 
-        <android.support.design.widget.TextInputEditText
+        <EditText
             android:id="@+id/ibe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/birth_hint"
             android:layout_gravity="center_horizontal"
-            android:onClick="showDatePickerDialog"
             />
 
     </android.support.design.widget.TextInputLayout>
@@ -88,7 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal">
 
-        <android.support.design.widget.TextInputEditText
+        <EditText
             android:id="@+id/ipe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -109,7 +108,7 @@
         android:layout_gravity="center_horizontal">
 
 
-        <android.support.design.widget.TextInputEditText
+        <EditText
             android:id="@+id/iee"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -128,7 +127,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal">
 
-        <android.support.design.widget.TextInputEditText
+        <EditText
             android:id="@+id/ide"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

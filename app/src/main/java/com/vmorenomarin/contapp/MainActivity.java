@@ -1,42 +1,31 @@
 package com.vmorenomarin.contapp;
 
+import android.widget.EditText;
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.widget.Button;
-import android.support.design.widget.TextInputEditText;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.support.design.widget.TextInputLayout;
-import android.text.TextUtils;
-import android.text.TextWatcher;  //valida el texto ingresado.
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.DatePicker;
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.text.InputType;
-import android.view.Menu;
-import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
-
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
 
-
 public class MainActivity extends AppCompatActivity implements OnFocusChangeListener {
 
-    TextInputEditText inputNameEditable, inputEmailEditable, inputPhoneEditable, inputDatebirthdayEditable, inputDescriptionEditable;
-    //TextInputLayout inputLayoutName, inputLayoutEmail, inputLayoutPhone, inputLayoutDatebirthday, inputLayoutDescription;
+    EditText inputNameEditable, inputEmailEditable, inputPhoneEditable, inputDatebirthdayEditable, inputDescriptionEditable;
+
     Button btnConfirmation;
+
     private DatePicker datePicker;
     private DatePickerDialog fromDatePickerDialog;
+
     private SimpleDateFormat dateFormatter;
     private Contact contact;
 
@@ -45,17 +34,17 @@ public class MainActivity extends AppCompatActivity implements OnFocusChangeList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-     /*   inputLayoutName = (TextInputLayout) findViewById(R.id.inf);
-        inputLayoutDatebirthday = (TextInputLayout) findViewById(R.id.ibf);
-        inputLayoutPhone = (TextInputLayout) findViewById(R.id.ipf);
-        inputLayoutEmail = (TextInputLayout) findViewById(R.id.ief);
-        inputLayoutDescription = (TextInputLayout) findViewById(R.id.idf);*/
+        dateFormatter = new SimpleDateFormat("d 'de' MMMM, yyyy", new Locale("es", "ES"));
 
-        inputNameEditable = (TextInputEditText) findViewById(R.id.ine);
-        inputDatebirthdayEditable = (TextInputEditText) findViewById(R.id.ibe);
-        inputPhoneEditable = (TextInputEditText) findViewById(R.id.ipe);
-        inputEmailEditable = (TextInputEditText) findViewById(R.id.iee);
-        inputDescriptionEditable = (TextInputEditText) findViewById(R.id.ide);
+
+        findViewsById();
+        setDateTimeField();
+
+        inputNameEditable = (EditText) findViewById(R.id.ine);
+        inputDatebirthdayEditable = (EditText) findViewById(R.id.ibe);
+        inputPhoneEditable = (EditText) findViewById(R.id.ipe);
+        inputEmailEditable = (EditText) findViewById(R.id.iee);
+        inputDescriptionEditable = (EditText) findViewById(R.id.ide);
 
         Intent intent = getIntent();
 
@@ -87,18 +76,13 @@ public class MainActivity extends AppCompatActivity implements OnFocusChangeList
         inputDescriptionEditable.setText(description);
 
         btnConfirmation = (Button) findViewById(R.id.btnConfirmation);
-        dateFormatter = new SimpleDateFormat("d 'de' MMMM, yyyy", new Locale("es", "ES"));
-
-
-
-       findViewsById();
-       setDateTimeField();
 
     }
 
     private void findViewsById() {
-        inputDatebirthdayEditable = (TextInputEditText) findViewById(R.id.ibe);
+        inputDatebirthdayEditable = (EditText) findViewById(R.id.ibe);
         inputDatebirthdayEditable.setInputType(InputType.TYPE_NULL);
+        inputDatebirthdayEditable.requestFocus();
     }
 
     private void setDateTimeField() {
@@ -116,11 +100,6 @@ public class MainActivity extends AppCompatActivity implements OnFocusChangeList
 
     }
 
-    @Override
-    public void onFocusChange(View view, boolean hasFocus) {
-        if (hasFocus)
-            fromDatePickerDialog.show();
-    }
 
     public void setBtnConfirmation(View view) {
         Intent intent = new Intent(MainActivity.this, Main2Activity.class);
@@ -133,5 +112,13 @@ public class MainActivity extends AppCompatActivity implements OnFocusChangeList
         startActivity(intent);
         this.finish();
     }
+
+    @Override
+    public void onFocusChange(View view, boolean hasFocus) {
+        if (hasFocus) {
+            fromDatePickerDialog.show();
+        }
+    }
+
 
 }
